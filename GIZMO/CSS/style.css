@@ -1,0 +1,502 @@
+:root{
+    --background-color-body:#eee;
+    --primary-color: rgb(79, 26, 202);
+    --default-border: border: 1px solid var(--primary-color);
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    color: var(--primary-color);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    bottom: 2rem;
+    position: fixed;
+    font-size: 3rem;
+    letter-spacing: 4px;
+}
+
+
+.mic-holder{
+  position: fixed;
+  bottom: 7rem;
+}
+
+.mic-holder button{
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: .1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: transparent;
+  font-size: .9rem;
+  cursor: pointer;
+  transition: .4s  cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.mic-holder button:hover{
+  background: var(--primary-color);
+  color: var(--background-color-body);
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background: var(--background-color-body);
+}
+
+.gizmo-holder{
+    min-width: 10rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     animation: bopping 1s linear infinite alternate;
+}
+
+.antenna{
+  height: 2rem;
+  margin-bottom: -.6rem;
+  z-index: 9;
+}
+
+.antenna img{
+  width: 100%;
+  height: 100%;
+}
+
+.gizmo-head{
+    width: 7rem;
+    height: 5rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.gizmo-ear-holder{
+width: 100%;
+border: var(--default-border);
+height: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 3rem;
+}
+
+.gizmo-ear{
+    width: 1rem;
+    height: 1rem;
+    background: var(--primary-color);
+   }
+
+
+   .gizmo-eyes-holder{
+    width: 100%;
+border: var(--default-border);
+height: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 1rem;
+position: absolute;
+margin-top: -1rem;
+   }
+
+
+.gizmo-eye{
+    width: 10px;
+    height: 7px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: gray;
+}
+
+.gizmo-eye img{
+  width: 100%;
+  height: 100%;
+}
+
+.left-eye{
+animation: right-eye-blink 3s linear infinite alternate;
+}
+
+.right-eye{
+animation: left-eye-blink 3s linear infinite alternate;
+}
+
+.gizmo-mouth{
+    width: 1rem;
+    height: auto;
+    margin-top: .5rem;
+    overflow: hidden;
+    position: absolute;
+}
+
+.gizmo-mouth img{
+  width: 100%;
+  height: 100%;
+}
+
+.gizmo-body{
+  margin-top: -.6rem;
+}
+
+.gizmo-torso{
+    margin-top: -.1rem;
+    width: 8rem;
+    min-height: 9rem;
+    border-bottom-left-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+}
+
+.gizmo-hand-holder{
+    position: absolute;
+    display: flex;
+    gap: 7rem;
+    margin-left: -2.5rem;
+    margin-top: .5rem;
+}
+
+.gizmo-hand{
+    width: 2rem;
+    height: 6rem;
+    background: var(--primary-color);
+    border-bottom-left-radius: 20px;
+}
+
+.right-hand{
+    position: absolute;
+    margin-left: 9rem;
+}
+
+.gizmo-bottom-shadow{
+    background: #333;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    transform: rotateX(120deg);
+}
+
+.scale-shadow{
+    animation: pulse 1s linear infinite alternate;
+}
+
+.left-hand{
+    animation: wave-left-hand 5s linear infinite alternate;
+}
+
+
+.head-img{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.head-img img{
+  width: 100%;
+}
+
+img{
+  width: 100%;
+}
+
+@keyframes bopping {
+    0%{
+        transform: translateY(-.5rem);
+    }
+
+
+    100%{
+        transform: translateY(.5rem);
+    }
+}
+
+
+@keyframes rotating-one {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    10%{
+        transform: rotate(10deg);
+    }
+
+    20%{
+        transform: rotate(0deg);
+    }
+
+    30%{
+        transform: rotate(-20deg);
+    }
+    
+
+    40%{
+        transform: rotate(-10deg);
+    }
+
+
+    60%{
+        transform: rotate(0deg);
+    }
+
+    80%{
+        transform: rotate(60deg);
+    }
+
+
+    100%{
+        transform: rotate(0deg);;
+    }
+}
+
+
+
+@keyframes left-eye-blink {
+    0%{
+        height: .8rem;
+        transform:rotate(0deg)
+    }
+
+    
+    1%{
+        height: .8rem;
+        transform:rotate(0deg)
+      } 
+      
+    2%{
+        height: .8rem;
+        transform:rotate(0deg)
+      } 
+      
+    3%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+
+    10%{
+        height: .8rem;
+        transform:rotate(0deg)
+      } 
+      
+    20%{
+        height: .8rem;
+        transform:rotate(0deg)
+      } 
+      
+    30%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+
+      40%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+
+    50%{
+        height: .8rem;
+        transform:rotate(0deg)
+
+    }
+
+
+    60%{
+      height: .8rem;
+      transform:rotate(0deg)
+    }
+
+    70%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+  
+      80%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+
+  
+      90%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+  
+    
+    100%{
+        height: .1rem;
+    }
+}
+
+
+
+@keyframes right-eye-blink {
+    0%{
+        height: .8rem;
+        transform:rotate(0deg)
+    }
+
+    
+    1%{
+        height: .8rem;
+        transform:rotate(0deg)
+      } 
+      
+    2%{
+        height: .8rem;
+        transform:rotate(0deg)
+      } 
+      
+    3%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+
+    10%{
+        height: .8rem;
+        transform:rotate(0deg)
+      } 
+      
+    20%{
+        height: .8rem;
+        transform:rotate(0deg)
+      } 
+      
+    30%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+
+      40%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+
+    50%{
+        height: .8rem;
+        transform:rotate(0deg)
+
+    }
+
+
+    60%{
+      height: .8rem;
+      transform:rotate(0deg)
+    }
+
+    70%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+  
+      80%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+
+  
+      90%{
+        height: .8rem;
+        transform:rotate(0deg)
+      }
+  
+    
+    100%{
+        height: .1rem;
+    }
+}
+
+@keyframes pulse {
+     
+    0%{
+        transform: scale(.2);
+        opacity: .4;
+      }
+  
+    
+    100%{
+       transform: scale(1);
+       opacity: 1;
+    }
+}
+
+
+@keyframes wave-left-hand {
+     
+    1%{
+        transform: rotate(190deg);
+        margin-top: -5rem;
+        margin-left: 1rem;
+      }
+  
+      20%{
+        transform: rotate(130deg);
+        margin-top: -5rem;
+        margin-left: -2rem;
+      }
+ 
+       30%{
+        transform: rotate(190deg);
+        margin-top: -5rem;
+        margin-left: 1rem;
+      } 
+
+      40%{
+        transform: rotate(130deg);
+        margin-top: -5rem;
+        margin-left: -2rem;
+      }
+
+        50%{
+            transform: rotate(0deg);
+        margin-top: 0rem;
+        margin-left: 0rem;
+      }
+
+        60%{
+            transform: rotate(0deg);
+            margin-top: 0rem;
+            margin-left: 0rem;
+      }
+
+        70%{
+        transform: rotate(0deg);
+        margin-top: 0rem;
+        margin-left: 0rem;
+      }
+
+      80%{
+        transform: rotate(0deg);
+        margin-top: 0rem;
+        margin-left: 0rem;
+      }
+
+
+      90%{
+        transform: rotate(0deg);
+        margin-top: 0rem;
+        margin-left: 0rem;
+      }
+
+      100%{
+        transform: rotate(0deg);
+        margin-top: 0rem;
+        margin-left: 0rem;
+      }
+
+
+
+}
