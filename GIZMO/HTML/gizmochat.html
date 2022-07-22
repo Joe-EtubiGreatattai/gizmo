@@ -1,103 +1,69 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <title>Speech to text conversion using JavaScript</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            background: #1e2440;
-            color: #f2efe2;
-            font-size: 16px;
-        }
-
-
-        button:focus {
-            outline: 0;
-        }
-
-        .mycontainer {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 150px 100px;
-            text-align: center;
-        }
-
-
-        .mywebapp {
-            margin: 50px auto;
-        }
-
-        #textbox {
-            margin: 30px 0;
-        }
-
-        @media (max-width: 768px) {
-            .mycontainer {
-                width: 85vw;
-                max-width: 85vw;
-            }
-
-            button {
-                margin-bottom: 10px;
-            }
-        }
-    </style>
-
+    <title>Speech to Text</title>
 </head>
 
 <body>
-    <div class="mycontainer">
 
-        <h1>Speech to text conversion using JavaScript</h1>
 
-        <div class="mywebapp">
-            <div class="input">
-                <textarea id="textbox" rows="6"></textarea>
-            </div>
-            <button id="start-btn" title="Start">Start</button>
-        </div>
+    <span id="final" class="text-light"></span>
+
+    <div class="mt-4">
+        <button class="btn btn-success" id="start">Start</button>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-        var SpeechRecognition = window.webkitSpeechRecognition;
-        var recognition = new SpeechRecognition();
-        var Textbox = $('#textbox');
-        var Content = '';
-        recognition.continuous = true;
-        
-        recognition.onresult = function (event) {
-            var current = event.resultIndex;
-            var transcript = event.results[current][0].transcript;
-            Content = transcript;
-            Textbox.val(Content);
-        };
+</body>
+<script>
+    if ("webkitSpeechRecognition" in window) {
+        // Initialize webkitSpeechRecognition
+        let speechRecognition = new webkitSpeechRecognition();
 
+        // String for the Final Transcript
+        let final_transcript = "";
+        // Set the properties for the Speech Recognition object
+        speechRecognition.continuous = true;
+        speechRecognition.onresult = (event) => {
+            // Create the interim transcript string locally because we don't want it to persist like final transcript
 
-        recognition.onerror = function (event) {
-            if (event.error == 'no-speech') {
-                alert("unable to understand you")
+            // Loop through the results from the speech recognition object.
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                // If the result item is Final, add it to Final Transcript, Else add it to Interim transcript
+                if (event.results[i].isFinal) {
+                    final_transcript = event.results[i][0].transcript;
+                }
             }
+
+            // Set the Final transcript and Interim transcript.
+            document.querySelector("#final").innerHTML = final_transcript;
+            // console.log(final_transcript);
+            var reply = final_transcript;
+        if (reply.includes("how are you") == true) {
+            alert("fine")
         }
 
-        $('#start-btn').on('click', function (e) {
-            recognition.start();
-        });
+        else if (reply.includes("what is your name") == true) {
+            alert("i am gizmo")
+        }
+        };
+
+        // Set the onClick property of the start button
+        document.querySelector("#start").onclick = () => {
+            // Start the Speech Recognition
+            speechRecognition.start();
+        };
+      
 
 
-        Textbox.on('input', function () {
-            Content = $(this).val();
-        })
-    </script>
+    } 
+    
+    else {
+        console.log("Speech Recognition Not Available");
+    }
+</script>
 </body>
 
 </html>

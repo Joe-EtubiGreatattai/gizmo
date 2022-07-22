@@ -194,7 +194,7 @@ animation: left-eye-blink 3s linear infinite alternate;
 }
 
 .scale-shadow{
-    animation: pulse 1s linear infinite alternate;
+    animation: pulse-scale 1s linear infinite alternate;
 }
 
 .left-hand{
@@ -431,6 +431,23 @@ img{
        opacity: .8;
     }
 }
+
+
+@keyframes pulse-scale {
+     
+  0%{
+      opacity: .4;
+      transform: scale(.4);
+    }
+
+  
+  100%{
+     opacity: .8;
+     transform: scale(1);
+  }
+}
+
+
 
 
 @keyframes wave-left-hand {
