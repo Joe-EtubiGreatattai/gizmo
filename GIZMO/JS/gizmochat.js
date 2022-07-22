@@ -25,7 +25,8 @@ eye = ['how would you like it if i poked you in the eye', 'are you trying to bli
 mouth = ['thats my mouth', 'do you also have a mouth ?', 'i dont really eat with that, lol']
 body = ['okay that feels nice', 'one more please, do that again', ]
 jokes = ['Why did the soccer player take so long to eat dinner? Because he thought he couldn’t use his hands.', 'Why did the teddy bear say no to dessert? Because she was stuffed.', 'What do kids play when their mom is using the phone? Bored games.', ' What do you call an ant who fights crime? A vigilANTe!', 'Why are snails slow? Because they’re carrying a house on their back.', 'What’s the smartest insect? A spelling bee!', 'What does a storm cloud wear under his raincoat? Thunderwear.', 'What is fast, loud and crunchy? A rocket chip', 'How does the ocean say hi? It waves!', 'What do you call a couple of chimpanzees sharing an Amazon account? PRIME-mates.']
-document.querySelector(".start-talk").addEventListener("click", () => {
+
+document.querySelector(".start-talk").addEventListener("load", () => {
   speech.text = words[Math.floor(Math.random() * words.length)];
   window.speechSynthesis.speak(speech);
 });
@@ -81,14 +82,56 @@ if ("webkitSpeechRecognition" in window) {
     window.speechSynthesis.speak(speech);
   }
 
-  if (reply.includes("what is your name") == true) {
+  else if (reply.includes("what is your name") == true) {
     speech.text = myname[Math.floor(Math.random() * myname.length)];
     window.speechSynthesis.speak(speech);
   }
 
-  if (reply.includes("what can you do") == true) {
+  else if (reply.includes("what can you do") == true) {
     speech.text = functions[Math.floor(Math.random() * functions.length)];
     window.speechSynthesis.speak(speech);
+  }
+
+
+  else if (reply.includes("close your eyes") == true) {
+    document.querySelector(".left-eye").style.height = ".1rem";
+    document.querySelector(".left-eye").style.animation = "none";
+    document.querySelector(".right-eye").style.height = ".1rem";
+    document.querySelector(".right-eye").style.animation = "none";
+  }
+
+  
+  else if (reply.includes("dark") == true) {
+    document.querySelector("body").style.background = "#222";
+  }
+
+  
+  else if (reply.includes("light") == true) {
+    document.querySelector("body").style.background = "#eee";
+  }
+
+  
+  else if (reply.includes("tell me a joke") == true) {
+    speech.text = jokes[Math.floor(Math.random() * jokes.length)];
+    window.speechSynthesis.speak(speech);
+  }
+
+  else if (reply.includes("time") == true) {   
+const d = new Date();
+speech.text = d.getDate() + d.getMonth() + 1 + d.getFullYear();
+window.speechSynthesis.speak(speech);
+}
+
+  
+
+
+
+  
+  else if (reply.includes("open your eyes") == true) {
+    document.querySelector(".left-eye").style.height = ".8rem";
+    document.querySelector(".left-eye").style.animation = "left-eye-blink 3s linear infinite alternate";
+    document.querySelector(".right-eye").style.height = ".8rem";
+    document.querySelector(".right-eye").style.animation = "right-eye-blink 3s linear infinite alternate";
   }
 
 
