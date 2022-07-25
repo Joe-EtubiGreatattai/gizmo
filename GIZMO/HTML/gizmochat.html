@@ -4,66 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <title>Speech to Text</title>
+    <style>
+        body {
+  background: #222222;
+}
+
+.datetime {
+  font-size: 16px;
+  padding: 24px;
+  color: #ffffff;
+  background: #444444;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border-right: 10px #009578 solid;
+  width: 400px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+
+.time {
+  font-size: 3em;
+  color: #00ffcc;
+}
+
+.date {
+  margin-top: 12px;
+  font-size: 1.75em;
+}
+
+    </style>
 </head>
 
 <body>
-
-
-    <span id="final" class="text-light"></span>
-
-    <div class="mt-4">
-        <button class="btn btn-success" id="start">Start</button>
+     <div class="datetime">
+      <div class="time"></div>
+      <div class="date"></div>
     </div>
-</body>
+
+
 <script>
-    if ("webkitSpeechRecognition" in window) {
-        // Initialize webkitSpeechRecognition
-        let speechRecognition = new webkitSpeechRecognition();
+    const timeElement = document.querySelector(".time");
+const dateElement = document.querySelector(".date");
 
-        // String for the Final Transcript
-        let final_transcript = "";
-        // Set the properties for the Speech Recognition object
-        speechRecognition.continuous = true;
-        speechRecognition.onresult = (event) => {
-            // Create the interim transcript string locally because we don't want it to persist like final transcript
+/**
+ * @param {Date} date
+ */
+function formatTime(date) {
+  const hours12 = date.getHours() % 12 || 12;
+  const minutes = date.getMinutes();
+  const isAm = date.getHours() < 12;
 
-            // Loop through the results from the speech recognition object.
-            for (let i = event.resultIndex; i < event.results.length; ++i) {
-                // If the result item is Final, add it to Final Transcript, Else add it to Interim transcript
-                if (event.results[i].isFinal) {
-                    final_transcript = event.results[i][0].transcript;
-                }
-            }
+  return `${hours12.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
+}
 
-            // Set the Final transcript and Interim transcript.
-            document.querySelector("#final").innerHTML = final_transcript;
-            // console.log(final_transcript);
-            var reply = final_transcript;
-        if (reply.includes("how are you") == true) {
-            alert("fine")
-        }
+/**
+ * @param {Date} date
+ */
+function formatDate(date) {
+  const DAYS = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  const MONTHS = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
 
-        else if (reply.includes("what is your name") == true) {
-            alert("i am gizmo")
-        }
-        };
+  return `${DAYS[date.getDay()]}, ${
+    MONTHS[date.getMonth()]
+  } ${date.getDate()} ${date.getFullYear()}`;
+}
 
-        // Set the onClick property of the start button
-        document.querySelector("#start").onclick = () => {
-            // Start the Speech Recognition
-            speechRecognition.start();
-        };
-      
+setInterval(() => {
+  const now = new Date();
 
+  timeElement.textContent = formatTime(now);
+  dateElement.textContent = formatDate(now);
+}, 200);
 
-    } 
-    
-    else {
-        console.log("Speech Recognition Not Available");
-    }
 </script>
 </body>
-
 </html>

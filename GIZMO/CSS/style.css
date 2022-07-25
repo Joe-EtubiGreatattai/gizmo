@@ -47,6 +47,22 @@ h1{
 }
 
 
+
+.mic-holder button span{
+  border: 1px solid var(--primary-color);
+  padding: .1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--background-color-body);
+  font-size: .9rem;
+  cursor: pointer;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -156,6 +172,8 @@ animation: left-eye-blink 3s linear infinite alternate;
 .gizmo-body{
   margin-top: -.6rem;
 }
+
+
 
 .gizmo-torso{
     margin-top: -.1rem;
