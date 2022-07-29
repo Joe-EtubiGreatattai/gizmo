@@ -2,12 +2,13 @@
 
 
 :root{
-    --background-color-body:#eee;
-    --primary-color: rgb(79, 26, 202);
-    --default-border: border: 1px solid var(--primary-color);
+  --background-color-body:#eee;
+  --primary-color: rgb(79, 26, 202);
+  --default-border: border: 1px solid var(--primary-color);
 }
 
 
+*::-webkit-scrollbar{display: none;}
 
 * {
   padding: 0;
@@ -17,7 +18,7 @@
 }
 
 
-h1{
+.bottom-text{
     color: var(--primary-color);
     bottom: 2rem;
     position: fixed;
@@ -137,7 +138,7 @@ margin-top: -1rem;
 
 .gizmo-eye{
     width: 10px;
-    height: 7px;
+    height: .8px;
     border-radius: 50%;
     overflow: hidden;
     background: gray;
@@ -145,6 +146,7 @@ margin-top: -1rem;
 
 .gizmo-eye img{
   width: 100%;
+  margin-top: -.6rem;
   height: 100%;
 }
 
@@ -567,3 +569,79 @@ img{
 }
 
 }
+
+.page-embeb-holder{
+  background: var(--background-color-body);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.page-embeb-holder iframe{
+  width: 100%;
+  height: 100%;
+}
+
+.side-btn-holder{
+  position: fixed;
+  left: 0;
+  bottom: 5vh;
+  width: 4rem;
+  height: auto;
+}
+
+.side-btn-holder button{
+  cursor: pointer;
+  padding: 0;
+  text-align: center;
+  background: var(--primary-color);
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  color: var(--background-color-body);
+  width: 2rem;
+  height: 2rem;
+}
+
+.shelf-holder{
+  position: fixed;
+  width: 15vw;
+  height: 40vh;
+  left: 10vw;
+  overflow: hidden;
+  display: none;
+}
+
+.shelf-holder img{
+  position: absolute;
+  height: 100%;
+}
+
+.shelf-holder input{
+  transform: scale(99);
+  opacity: 0;
+}
+
+.read-book{
+  overflow: hidden;
+}
+
+.read-book input{
+  transform: scale(999);
+  opacity: 0;
+  z-index: 9;
+}
+
+.read-book i{
+  position: absolute;
+}
+
