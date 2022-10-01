@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    
+    <meta name="theme-color" content="rgb(79, 26, 202)">
+    <link rel="shortcut icon" href="IMAGES/head-icon.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GIZMO</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-  <a href="GIZMO/HTML/index.html"><h1>GIZMO</h1>
-  </a>
+<h1 class="bottom-text">GIZMO</h1>
+
+
+    <div class="gizmo-holder">
+        <div class="antenna">
+            <img src="IMAGES/antenna.png" alt="">
+        </div>
+        <div class="gizmo-head">
+            <div class="head-img">
+                <img src="IMAGES/head-removebg-preview.png" alt="">
+            </div>
+            <div class="gizmo-eyes-holder">
+                 <div class="gizmo-eye left-eye"><img src="IMAGES/eye-removebg-preview.png" alt=""></div>
+                <div class="gizmo-eye right-eye"><img src="IMAGES/eye-removebg-preview.png" alt=""></div>
+            </div>
+            <div class="gizmo-mouth">
+                <img src="IMAGES/mouth-removebg-preview.png" alt="">
+            </div>
+        </div>
+
+        <div class="gizmo-body">
+            <!-- <div class="gizmo-hand-holder">
+                <div class="gizmo-hand left-hand"></div>
+                <div class="gizmo-hand right-hand"></div>
+            </div> -->
+            <div class="gizmo-torso">
+                <div class="torso-img-holder">
+                    <img src="IMAGES/body.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="scale-shadow">
+            <div class="gizmo-bottom-shadow">
+            </div>
+        </div>
+    </div>
+
+    <div class="mic-holder">
+        <button class="start-talk">
+            <ion-icon name="mic-outline"></ion-icon>
+        </button>
+    </div>
+    <script src="JS/gizmochat.js"></script>
 </body>
+
 </html>
